@@ -1,9 +1,13 @@
 package com.example.italianplacesmonth.layout
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -59,10 +63,38 @@ fun PlacesListItemOpened(place: Place, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun PlacesListItemClosed(place: Place, index: Int, modifier: Modifier = Modifier) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier
+                .padding(16.dp)
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = stringResource(place.title),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(modifier = Modifier.width(32.dp))
+            Text(
+                text = stringResource(R.string.day, (index + 1)),
+                style = MaterialTheme.typography.titleSmall
+            )
+        }
+    }
+}
+
 
 @Preview(showBackground = false)
 @Composable
-fun PlacesListItemLight() {
+fun PlacesListItemOpenedLight() {
     ItalianPlacesMonthTheme(darkTheme = false) {
         PlacesListItemOpened(
             place = Place(
@@ -72,6 +104,23 @@ fun PlacesListItemLight() {
                 year = R.string.year_1,
                 image = R.drawable.image_1
             )
+        )
+    }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun PlacesListItemClosedLight() {
+    ItalianPlacesMonthTheme(darkTheme = false) {
+        PlacesListItemClosed(
+            place = Place(
+                title = R.string.title_1,
+                city = R.string.city_1,
+                region = R.string.region_1,
+                year = R.string.year_1,
+                image = R.drawable.image_1
+            ),
+            index = 0
         )
     }
 }
@@ -88,6 +137,23 @@ fun PlacesListItemDark() {
                 year = R.string.year_1,
                 image = R.drawable.image_1
             )
+        )
+    }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun PlacesListItemClosedDark() {
+    ItalianPlacesMonthTheme(darkTheme = true) {
+        PlacesListItemClosed(
+            place = Place(
+                title = R.string.title_1,
+                city = R.string.city_1,
+                region = R.string.region_1,
+                year = R.string.year_1,
+                image = R.drawable.image_1
+            ),
+            index = 0
         )
     }
 }
