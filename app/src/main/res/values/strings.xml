@@ -1,3 +1,133 @@
 <resources>
     <string name="app_name">ItalianPlacesMonth</string>
+
+    <!-- Titles -->
+    <string name="title_1">Colosseo</string>
+    <string name="title_2">Basilica di San Pietro</string>
+    <string name="title_3">Basilica di Santa Maria del Fiore</string>
+    <string name="title_4">Cattedrale Metropolitana della Natività della Beata Vergine Maria</string>
+    <string name="title_5">Castel del Monte</string>
+    <string name="title_6">Mole Antonelliana</string>
+    <string name="title_7">Basilica di San Marco</string>
+    <string name="title_8">Cappella Sistina</string>
+    <string name="title_9">Ponte Vecchio</string>
+    <string name="title_10">Basilica di Sant\'Antonio</string>
+    <string name="title_11">Cattedrale Metropolitana della Natività di Maria Santissima</string>
+    <string name="title_12">Cattedrale di San Lorenzo</string>
+    <string name="title_13">Mausoleo di Galla Placidia</string>
+    <string name="title_14">Cattedrale Metropolitana di Santa Maria Assunta</string>
+    <string name="title_15">Fontana di Trevi</string>
+    <string name="title_16">Basilica di San Francesco</string>
+    <string name="title_17">Cattedrale Metropolitana Primaziale della Santa Vergine Maria Assunta</string>
+    <string name="title_18">Galleria Vittorio Emanuele II</string>
+    <string name="title_19">Cattedrale di San Nicolò</string>
+    <string name="title_20">Maschio Angioino</string>
+    <string name="title_21">Cattedrale di Santa Maria Assunta</string>
+    <string name="title_22">Torre di Pisa</string>
+    <string name="title_23">Basilica di Santa Maria Assunta</string>
+    <string name="title_24">Arena di Verona</string>
+    <string name="title_25">Cattedrale di Sant\'Andrea</string>
+    <string name="title_26">Basilica della Beata Maria Vergine Assunta</string>
+    <string name="title_27">Cappella degli Scrovegni</string>
+    <string name="title_28">Cattedrale di Sant\'Agata</string>
+    <string name="title_29">Trulli di Alberobello</string>
+    <string name="title_30">Pantheon</string>
+
+    <!-- Cities -->
+    <string name="city_1">Roma</string>
+    <string name="city_2">Roma</string>
+    <string name="city_3">Firenze</string>
+    <string name="city_4">Milano</string>
+    <string name="city_5">Andria</string>
+    <string name="city_6">Torino</string>
+    <string name="city_7">Venezia</string>
+    <string name="city_8">Roma</string>
+    <string name="city_9">Firenze</string>
+    <string name="city_10">Padova</string>
+    <string name="city_11">Siracusa</string>
+    <string name="city_12">Genova</string>
+    <string name="city_13">Ravenna</string>
+    <string name="city_14">Siena</string>
+    <string name="city_15">Roma</string>
+    <string name="city_16">Assisi</string>
+    <string name="city_17">Palermo</string>
+    <string name="city_18">Milano</string>
+    <string name="city_19">Noto</string>
+    <string name="city_20">Napoli</string>
+    <string name="city_21">Napoli</string>
+    <string name="city_22">Pisa</string>
+    <string name="city_23">Orvieto</string>
+    <string name="city_24">Verona</string>
+    <string name="city_25">Amalfi</string>
+    <string name="city_26">Trani</string>
+    <string name="city_27">Padova</string>
+    <string name="city_28">Catania</string>
+    <string name="city_29">Alberobello</string>
+    <string name="city_30">Roma</string>
+
+    <!-- Regions -->
+    <string name="region_1">Lazio</string>
+    <string name="region_2">Lazio</string>
+    <string name="region_3">Toscana</string>
+    <string name="region_4">Lombardia</string>
+    <string name="region_5">Puglia</string>
+    <string name="region_6">Piemonte</string>
+    <string name="region_7">Veneto</string>
+    <string name="region_8">Lazio</string>
+    <string name="region_9">Toscana</string>
+    <string name="region_10">Veneto</string>
+    <string name="region_11">Sicilia</string>
+    <string name="region_12">Liguria</string>
+    <string name="region_13">Emilia-Romagna</string>
+    <string name="region_14">Toscana</string>
+    <string name="region_15">Lazio</string>
+    <string name="region_16">Umbria</string>
+    <string name="region_17">Sicilia</string>
+    <string name="region_18">Lombardia</string>
+    <string name="region_19">Sicilia</string>
+    <string name="region_20">Campania</string>
+    <string name="region_21">Campania</string>
+    <string name="region_22">Toscana</string>
+    <string name="region_23">Umbria</string>
+    <string name="region_24">Veneto</string>
+    <string name="region_25">Campania</string>
+    <string name="region_26">Puglia</string>
+    <string name="region_27">Veneto</string>
+    <string name="region_28">Sicilia</string>
+    <string name="region_29">Puglia</string>
+    <string name="region_30">Lazio</string>
+'
+
+    <!--Years -->
+    <string name="year_1">70</string>
+    <string name="year_2">1506</string>
+    <string name="year_3">1296</string>
+    <string name="year_4">1386</string>
+    <string name="year_5">1240</string>
+    <string name="year_6">1863</string>
+    <string name="year_7">828</string>
+    <string name="year_8">1473</string>
+    <string name="year_9">1345</string>
+    <string name="year_10">1232</string>
+    <string name="year_11">1753</string>
+    <string name="year_12">1098</string>
+    <string name="year_13">425</string>
+    <string name="year_14">1215</string>
+    <string name="year_15">1732</string>
+    <string name="year_16">1228</string>
+    <string name="year_17">1170</string>
+    <string name="year_18">1865</string>
+    <string name="year_19">1703</string>
+    <string name="year_20">1279</string>
+    <string name="year_21">1313</string>
+    <string name="year_22">1173</string>
+    <string name="year_23">1290</string>
+    <string name="year_24">40</string>
+    <string name="year_25">987</string>
+    <string name="year_26">1099</string>
+    <string name="year_27">1300</string>
+    <string name="year_28">1070</string>
+    <string name="year_29">1400</string>
+    <string name="year_30">126</string>
+
 </resources>
