@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ItalianPlacesMonth</string>
+    <string name="app_bar_title">30 Days in Italy</string>
+    <string name="day">Day %s</string>
+    <string name="description">%s, %s (%s)</string>
 
     <!-- Titles -->
     <string name="title_1">Colosseo</string>
