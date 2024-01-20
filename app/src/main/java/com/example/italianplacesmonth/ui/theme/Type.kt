@@ -26,7 +26,8 @@ val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
+        fontSize = 20.sp,
+        lineHeight = 24.sp
     ),
 
     titleSmall = TextStyle(
@@ -37,8 +38,9 @@ val Typography = Typography(
 
     bodySmall = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontWeight = FontWeight.Thin,
+        fontSize = 16.sp,
+        lineHeight = 20.sp
     ),
 
     /* Other default text styles to override
