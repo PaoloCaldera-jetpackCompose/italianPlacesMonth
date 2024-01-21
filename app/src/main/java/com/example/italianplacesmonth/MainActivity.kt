@@ -6,10 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.italianplacesmonth.data.PlacesRepository
+import com.example.italianplacesmonth.layout.PlacesListClosed
 import com.example.italianplacesmonth.ui.theme.ItalianPlacesMonthTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    MainActivityLayout()
                 }
             }
         }
@@ -30,17 +31,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MainActivityLayout() {
+    PlacesListClosed(PlacesRepository.loadPlaces())
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    ItalianPlacesMonthTheme {
-        Greeting("Android")
+fun MainActivityLayoutLight() {
+    ItalianPlacesMonthTheme(darkTheme = false) {
+        PlacesListClosed(PlacesRepository.loadPlaces())
+    }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun MainActivityLayoutDark() {
+    ItalianPlacesMonthTheme(darkTheme = true) {
+        PlacesListClosed(PlacesRepository.loadPlaces())
     }
 }
