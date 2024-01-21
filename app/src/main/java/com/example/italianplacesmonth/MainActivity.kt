@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.italianplacesmonth.data.PlacesRepository
-import com.example.italianplacesmonth.layout.PlacesListClosed
+import com.example.italianplacesmonth.layout.PlacesList
 import com.example.italianplacesmonth.ui.theme.ItalianPlacesMonthTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,14 +32,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainActivityLayout() {
-    PlacesListClosed(PlacesRepository.loadPlaces())
+    PlacesList(PlacesRepository.loadPlaces())
 }
 
 @Preview(showBackground = true)
 @Composable
 fun MainActivityLayoutLight() {
     ItalianPlacesMonthTheme(darkTheme = false) {
-        PlacesListClosed(PlacesRepository.loadPlaces())
+        PlacesList(PlacesRepository.loadPlaces())
     }
 }
 
@@ -47,6 +47,6 @@ fun MainActivityLayoutLight() {
 @Composable
 fun MainActivityLayoutDark() {
     ItalianPlacesMonthTheme(darkTheme = true) {
-        PlacesListClosed(PlacesRepository.loadPlaces())
+        PlacesList(PlacesRepository.loadPlaces())
     }
 }
