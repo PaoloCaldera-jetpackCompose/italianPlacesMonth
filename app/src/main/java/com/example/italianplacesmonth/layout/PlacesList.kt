@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -22,8 +24,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.italianplacesmonth.R
+import com.example.italianplacesmonth.data.PlacesRepository
 import com.example.italianplacesmonth.model.Place
 import com.example.italianplacesmonth.ui.theme.ItalianPlacesMonthTheme
+
+
+@Composable
+fun PlacesListOpened(places: List<Place>, modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(places) {
+            PlacesListItemOpened(place = it)
+        }
+    }
+}
 
 @Composable
 fun PlacesListItemOpened(place: Place, modifier: Modifier = Modifier) {
@@ -54,7 +70,7 @@ fun PlacesListItemOpened(place: Place, modifier: Modifier = Modifier) {
             Image(
                 painter = painterResource(place.image),
                 contentDescription = stringResource(place.title),
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .padding(8.dp)
                     .clip(MaterialTheme.shapes.small)
@@ -88,6 +104,23 @@ fun PlacesListItemClosed(place: Place, index: Int, modifier: Modifier = Modifier
                 style = MaterialTheme.typography.titleSmall
             )
         }
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PlacesListOpenedLight() {
+    ItalianPlacesMonthTheme(darkTheme = false) {
+        PlacesListOpened(places = PlacesRepository.loadPlaces())
+    }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun PlacesListOpenedDark() {
+    ItalianPlacesMonthTheme(darkTheme = true) {
+        PlacesListOpened(places = PlacesRepository.loadPlaces())
     }
 }
 
