@@ -1,6 +1,8 @@
 package com.example.italianplacesmonth.layout
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -68,7 +70,12 @@ fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
         Box(
             modifier = modifier
                 .padding(16.dp)
-                .animateContentSize()
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioNoBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
                 .fillMaxWidth()
         ) {
             if (isItemClosed) {
