@@ -1,7 +1,9 @@
 package com.example.italianplacesmonth.layout
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.italianplacesmonth.R
@@ -47,105 +50,97 @@ fun PlacesList(places: List<Place>, modifier: Modifier = Modifier) {
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
     var isItemClosed by remember { mutableStateOf(true) }
 
-    if (isItemClosed) {
-        // Layout configuration when the card is CLOSED
-        PlacesListItemClosed(
-            place = place,
-            index = index,
-            onClick = { isItemClosed = !isItemClosed },
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = if (isItemClosed)
+                MaterialTheme.colorScheme.primaryContainer
+            else
+                MaterialTheme.colorScheme.tertiaryContainer
+        ),
+        onClick = { isItemClosed = !isItemClosed },
+        modifier = modifier
+    ) {
+        Box(
             modifier = modifier
-        )
-    } else {
-        // Layout configuration when the card is OPENED
-        PlacesListItemOpened(
-            place = place,
-            onClick = { isItemClosed = !isItemClosed },
-            modifier = modifier
-        )
+                .padding(16.dp)
+                .animateContentSize()
+                .fillMaxWidth()
+        ) {
+            if (isItemClosed) {
+                // Layout configuration when the card is CLOSED
+                PlacesListItemClosed(place = place, index = index, modifier = modifier)
+            } else {
+                // Layout configuration when the card is OPENED
+                PlacesListItemOpened(place = place, modifier = modifier)
+            }
+        }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlacesListItemClosed(
     place: Place,
     index: Int,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        onClick = onClick
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
     ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        ) {
-            Text(
-                text = stringResource(place.title),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.weight(1f)
-            )
-            Spacer(modifier = Modifier.width(32.dp))
-            Text(
-                text = stringResource(R.string.day, (index + 1)),
-                style = MaterialTheme.typography.titleSmall
-            )
-        }
+        Text(
+            text = stringResource(place.title),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(modifier = Modifier.width(32.dp))
+        Text(
+            text = stringResource(R.string.day, (index + 1)),
+            style = MaterialTheme.typography.titleSmall
+        )
     }
+
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlacesListItemOpened(
     place: Place,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
-        ),
-        onClick = onClick
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.fillMaxWidth()
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        ) {
-            Text(
-                text = stringResource(place.title),
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = stringResource(
-                    R.string.description,
-                    stringResource(place.city),
-                    stringResource(place.region),
-                    stringResource(place.year)
-                ),
-                style = MaterialTheme.typography.bodySmall
-            )
-            Image(
-                painter = painterResource(place.image),
-                contentDescription = stringResource(place.title),
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .padding(8.dp)
-                    .clip(MaterialTheme.shapes.small)
-            )
-        }
+        Text(
+            text = stringResource(place.title),
+            style = MaterialTheme.typography.titleMedium,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = stringResource(
+                R.string.description,
+                stringResource(place.city),
+                stringResource(place.region),
+                stringResource(place.year)
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Center
+        )
+        Image(
+            painter = painterResource(place.image),
+            contentDescription = stringResource(place.title),
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .padding(8.dp)
+                .clip(MaterialTheme.shapes.small)
+        )
     }
+
 }
 
 
