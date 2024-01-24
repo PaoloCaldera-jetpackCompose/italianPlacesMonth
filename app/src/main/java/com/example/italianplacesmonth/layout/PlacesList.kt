@@ -7,6 +7,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,18 +32,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.italianplacesmonth.R
-import com.example.italianplacesmonth.data.PlacesRepository
 import com.example.italianplacesmonth.model.Place
-import com.example.italianplacesmonth.ui.theme.ItalianPlacesMonthTheme
 
 
 @Composable
-fun PlacesList(places: List<Place>, modifier: Modifier = Modifier) {
+fun PlacesList(places: List<Place>, contentPadding: PaddingValues, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier.padding(16.dp),
+        contentPadding = contentPadding,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         itemsIndexed(places) { index, place ->
@@ -130,22 +129,5 @@ fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
                 )
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PlacesListLight() {
-    ItalianPlacesMonthTheme(darkTheme = false) {
-        PlacesList(places = PlacesRepository.loadPlaces())
-    }
-}
-
-@Preview(showBackground = false)
-@Composable
-fun PlacesListDark() {
-    ItalianPlacesMonthTheme(darkTheme = true) {
-        PlacesList(places = PlacesRepository.loadPlaces())
     }
 }

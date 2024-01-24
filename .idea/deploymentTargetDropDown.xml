@@ -5,6 +5,12 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="placesList_displayClosed()">
+        <State />
+      </entry>
+      <entry key="placesList_openCard_displayTextAndImage()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
