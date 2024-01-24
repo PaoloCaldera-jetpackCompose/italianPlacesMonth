@@ -1,11 +1,11 @@
 package com.example.italianplacesmonth.layout
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -57,6 +57,8 @@ fun PlacesList(places: List<Place>, modifier: Modifier = Modifier) {
 fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
     var isItemClosed by remember { mutableStateOf(true) }
 
+    var titleArrangement by remember { mutableStateOf(Arrangement.SpaceBetween) }
+
     Card(
         colors = CardDefaults.cardColors(
             containerColor = if (isItemClosed)
@@ -64,10 +66,13 @@ fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
             else
                 MaterialTheme.colorScheme.tertiaryContainer
         ),
-        onClick = { isItemClosed = !isItemClosed },
+        onClick = {
+            isItemClosed = !isItemClosed
+            titleArrangement = if (isItemClosed) Arrangement.SpaceBetween else Arrangement.Center
+        },
         modifier = modifier
     ) {
-        Box(
+        Column(
             modifier = modifier
                 .padding(16.dp)
                 .animateContentSize(
@@ -76,78 +81,56 @@ fun PlacesListItem(place: Place, index: Int, modifier: Modifier = Modifier) {
                         stiffness = Spring.StiffnessLow
                     )
                 )
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if (isItemClosed) {
-                // Layout configuration when the card is CLOSED
-                PlacesListItemClosed(place = place, index = index, modifier = modifier)
-            } else {
-                // Layout configuration when the card is OPENED
-                PlacesListItemOpened(place = place, modifier = modifier)
+            AnimatedContent(
+                targetState = titleArrangement, label = ""
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = it
+                ) {
+                    Text(
+                        text = stringResource(place.title),
+                        style = MaterialTheme.typography.titleMedium,
+                        textAlign = if (isItemClosed) TextAlign.Start else TextAlign.Center,
+                        modifier = if (isItemClosed) Modifier.weight(1f) else Modifier
+                    )
+
+                    if (isItemClosed) {
+                        Spacer(modifier = Modifier.width(32.dp))
+                        Text(
+                            text = stringResource(R.string.day, (index + 1)),
+                            style = MaterialTheme.typography.titleSmall
+                        )
+                    }
+                }
+            }
+
+            if (!isItemClosed) {
+                Text(
+                    text = stringResource(
+                        R.string.description,
+                        stringResource(place.city),
+                        stringResource(place.region),
+                        stringResource(place.year)
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.Center
+                )
+
+                Image(
+                    painter = painterResource(place.image),
+                    contentDescription = stringResource(place.title),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clip(MaterialTheme.shapes.small)
+                )
             }
         }
     }
-}
-
-@Composable
-fun PlacesListItemClosed(
-    place: Place,
-    index: Int,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(place.title),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.weight(1f)
-        )
-        Spacer(modifier = Modifier.width(32.dp))
-        Text(
-            text = stringResource(R.string.day, (index + 1)),
-            style = MaterialTheme.typography.titleSmall
-        )
-    }
-
-}
-
-@Composable
-fun PlacesListItemOpened(
-    place: Place,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxWidth()
-    ) {
-        Text(
-            text = stringResource(place.title),
-            style = MaterialTheme.typography.titleMedium,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = stringResource(
-                R.string.description,
-                stringResource(place.city),
-                stringResource(place.region),
-                stringResource(place.year)
-            ),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Center
-        )
-        Image(
-            painter = painterResource(place.image),
-            contentDescription = stringResource(place.title),
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .padding(8.dp)
-                .clip(MaterialTheme.shapes.small)
-        )
-    }
-
 }
 
 
