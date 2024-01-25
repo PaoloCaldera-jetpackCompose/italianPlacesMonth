@@ -4,9 +4,12 @@ Italian Places Month is the test project of the third unit of the *Android Basic
 
 The project demonstrates the ability to build lists and improve the application quality by setting a theme and animations. Indeed, the entire theme has been built up entirely from scratch, selecting colors, fonts, and shapes for the app. The main topics covered in this project are listed below:
 
-* [List]()
+* [LazyColumn](https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyColumn(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1)) composable for the creation of the scrollable list
+* [Adaptive Icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) for the creation of the app icon
+* [Color](https://m3.material.io/styles/color/overview), [Typography](https://m3.material.io/styles/typography/overview) and [Shape](https://m3.material.io/styles/shape/overview) for setting the app theme
+* [Jetpack Compose Animation](https://developer.android.com/jetpack/compose/animation) for setting simple animations
 
-The project comprises just one screen whose layout is developed through Jetpack Compose. The list has been built with the [LazyColumn]() composable and the theme has been selected with the help of {Material Design 3 Theme Generator]().
+The project comprises just one screen whose layout is developed through Jetpack Compose. The theme has been selected and created with the help of [Material Design 3 Theme Builder](https://m3.material.io/theme-builder#/custom).
 
 Visit the [Wiki](https://github.com/PaoloCaldera-jetpackCompose/italianPlacesMonth/wiki) to see the application screens.
 
