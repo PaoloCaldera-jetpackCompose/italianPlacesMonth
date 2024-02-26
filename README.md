@@ -1,4 +1,4 @@
-## Italian Places Month
+# Italian Places Month
 
 Italian Places Month is the test project of the third unit of the *Android Basics with Compose* learning path, provided by Android Developers. It is focused on building lists and improving the user interface with Jetpack Compose. The application displays a list of 30 cards, one per each day of the month, where beautiful Italian places and historical buildings have been represented.
 
