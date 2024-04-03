@@ -11,14 +11,14 @@ The project demonstrates the ability to build lists and improve the application 
 
 The project comprises just one screen whose layout is developed through Jetpack Compose. The theme has been selected and created with the help of [Material Design 3 Theme Builder](https://m3.material.io/theme-builder#/custom).
 
-Visit the [Wiki](https://github.com/PaoloCaldera-jetpackCompose/italianPlacesMonth/wiki) to see the application screens.
+Visit the [Wiki](https://github.com/PaoloCaldera/italianPlacesMonth/wiki) to see the application screens.
 
 
 ## Getting Started
 
 To clone the repository, use the command
 ```
-$ git clone https://github.com/PaoloCaldera-jetpackCompose/italianPlacesMonth.git
+$ git clone https://github.com/PaoloCaldera/italianPlacesMonth.git
 ```
 or the `Get from VCS` option inside Android Studio by copying the link above.
 
